@@ -15,7 +15,7 @@
  */
 
 
-package BluetoothLibrary;
+package com.example.svitanov.weatherstation;
 
 import java.util.Set;
 
@@ -38,8 +38,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
-
-import com.example.svitanov.weatherstation.R;
 
 @SuppressLint("NewApi")
 public class DeviceList extends Activity {

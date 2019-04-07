@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package BluetoothLibrary;
+package com.example.svitanov.weatherstation;
 
 import java.io.IOException;
 import java.io.InputStream;

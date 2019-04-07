@@ -15,7 +15,7 @@
  */
 
 
-package BluetoothLibrary;
+package com.example.svitanov.weatherstation;
 
 public class BluetoothState {
     // Constants that indicate the current connection state
