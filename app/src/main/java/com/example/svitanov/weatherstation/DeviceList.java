@@ -19,6 +19,7 @@ package com.example.svitanov.weatherstation;
 
 import java.util.Set;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -28,6 +29,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -158,6 +160,11 @@ public class DeviceList extends Activity {
         if (mBtAdapter.isDiscovering()) {
             mBtAdapter.cancelDiscovery();
         }
+
+        int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
 
         // Request discover from BluetoothAdapter
         mBtAdapter.startDiscovery();
