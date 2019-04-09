@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
     Button on;
     Button off;
 
+    TextView firstValueName;
+    TextView firstValue;
+    TextView secondValueName;
+    TextView secondValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
         connect = (Button) findViewById(R.id.connect);
         on = (Button) findViewById(R.id.on);
         off = (Button) findViewById(R.id.off);
+
+        firstValueName = (TextView) findViewById(R.id.firstValueName);
+        firstValue = (TextView) findViewById(R.id.firstValue);
+        secondValueName = (TextView) findViewById(R.id.secondValueName);
+        secondValue = (TextView) findViewById(R.id.secondValue);
+
+        firstValueName.setText("Стойност 1:");
+        firstValue.setText("");
+        secondValueName.setText("Стойност 2:");
+        secondValue.setText("");
 
         if (!bluetooth.isBluetoothAvailable()) {
             Toast.makeText(getApplicationContext(), "Bluetooth is not available", Toast.LENGTH_SHORT).show();
@@ -46,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
 
             public void onDeviceConnectionFailed() {
                 connect.setText("Unable to connect");
+            }
+        });
+
+        bluetooth.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived(byte[] data, String message) {
+                String[] parts = message.split("_");
+                firstValue.setText(parts[0]);
+                secondValue.setText(parts[1]);
             }
         });
 
