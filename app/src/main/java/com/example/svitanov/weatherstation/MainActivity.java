@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         secondValueName = (TextView) findViewById(R.id.secondValueName);
         secondValue = (TextView) findViewById(R.id.secondValue);
 
-        firstValueName.setText("Стойност 1:");
+        firstValueName.setText("PM2.5 µg/m³:");
         firstValue.setText("");
-        secondValueName.setText("Стойност 2:");
+        secondValueName.setText("PM10 µg/m³:");
         secondValue.setText("");
 
         if (!bluetooth.isBluetoothAvailable()) {
